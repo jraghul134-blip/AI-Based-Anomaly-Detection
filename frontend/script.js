@@ -17,8 +17,8 @@ function initChart() {
     const ctx = document.getElementById('anomalyChart').getContext('2d');
     
     // Set global defaults for dark theme
-    Chart.defaults.color = '#94a3b8';
-    Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.05)';
+    Chart.defaults.color = '#4dc5b9';
+    Chart.defaults.borderColor = 'rgba(0, 255, 204, 0.1)';
     
     anomalyChart = new Chart(ctx, {
         type: 'scatter',
@@ -30,10 +30,10 @@ function initChart() {
             maintainAspectRatio: false,
             plugins: {
                 tooltip: {
-                    backgroundColor: 'rgba(15, 23, 42, 0.9)',
-                    titleColor: '#fff',
-                    bodyColor: '#e2e8f0',
-                    borderColor: 'rgba(255,255,255,0.1)',
+                    backgroundColor: 'rgba(5, 12, 18, 0.9)',
+                    titleColor: '#00ffcc',
+                    bodyColor: '#e0f8ff',
+                    borderColor: '#00ffcc',
                     borderWidth: 1,
                     padding: 10,
                     callbacks: {
@@ -43,17 +43,17 @@ function initChart() {
                     }
                 },
                 legend: {
-                    labels: { color: '#f8fafc' }
+                    labels: { color: '#e0f8ff' }
                 }
             },
             scales: {
                 x: {
-                    title: { display: true, text: 'Bytes In', color: '#94a3b8' },
-                    grid: { color: 'rgba(255,255,255,0.05)' }
+                    title: { display: true, text: 'Bytes In', color: '#4dc5b9' },
+                    grid: { color: 'rgba(0,255,204,0.05)' }
                 },
                 y: {
-                    title: { display: true, text: 'Bytes Out', color: '#94a3b8' },
-                    grid: { color: 'rgba(255,255,255,0.05)' }
+                    title: { display: true, text: 'Bytes Out', color: '#4dc5b9' },
+                    grid: { color: 'rgba(0,255,204,0.05)' }
                 }
             },
             animation: {
@@ -183,16 +183,16 @@ function plotData(data) {
         {
             label: 'Normal Traffic',
             data: normalPoints,
-            backgroundColor: 'rgba(59, 130, 246, 0.5)',
-            borderColor: 'rgba(59, 130, 246, 1)',
+            backgroundColor: 'rgba(0, 255, 204, 0.5)',
+            borderColor: '#00ffcc',
             pointRadius: 4,
             pointHoverRadius: 6
         },
         {
             label: 'Threat Detected (Anomaly)',
             data: threatPoints,
-            backgroundColor: 'rgba(239, 68, 68, 0.8)',
-            borderColor: 'rgba(239, 68, 68, 1)',
+            backgroundColor: 'rgba(255, 0, 60, 0.8)',
+            borderColor: '#ff003c',
             pointRadius: 6,
             pointHoverRadius: 8,
             pointStyle: 'triangle' // Make threats visually distinct
