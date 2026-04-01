@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Network Threat Detection</title>
+    <meta name="description" content="AI-based real-time network anomaly detection dashboard.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header class="top-nav">
+            <h1><span class="icon">🛡️</span> AI Network Threat Detection</h1>
+            <div class="status-indicator">
+                <span id="server-status" class="dot disconnected"></span>
+                <span id="server-text">Waiting for Data...</span>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="sidebar">
+                <div class="upload-zone" id="upload-zone">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="upload-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                    </svg>
+                    <p>Drag & Drop Network CSV</p>
+                    <span class="subtext">or click to browse</span>
+                    <input type="file" id="file-input" accept=".csv" hidden>
+                </div>
+                
+                <div class="stats-panel">
+                    <div class="stat-card">
+                        <h3>Total Packets Evaluated</h3>
+                        <p id="stat-total">0</p>
+                    </div>
+                    <div class="stat-card threat-card">
+                        <h3>Threats Detected</h3>
+                        <p id="stat-threats">0</p>
+                    </div>
+                </div>
+                
+                <button id="reset-btn" class="btn" disabled>Clear Data</button>
+            </div>
+
+            <div class="main-panel">
+                <div class="chart-container glass-panel">
+                    <h2>Traffic Analysis (AI View)</h2>
+                    <canvas id="anomalyChart"></canvas>
+                </div>
+                <div class="table-container glass-panel">
+                    <h2>Recent Threats</h2>
+                    <div class="table-wrapper">
+                        <table id="threat-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Bytes In</th>
+                                    <th>Bytes Out</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Threat rows injected here -->
+                                <tr>
+                                    <td colspan="4" class="empty-state">No anomalies to display.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
