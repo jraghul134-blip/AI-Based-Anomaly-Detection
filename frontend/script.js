@@ -9,8 +9,10 @@ const threatTableBody = document.querySelector('#threat-table tbody');
 
 let anomalyChart = null;
 
-// API Endpoint -> Python backend
-const API_URL = 'http://127.0.0.1:8000/detect_anomalies';
+// API Endpoint -> Dynamically use relative path in production or local backend url for dev
+const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+    ? 'http://127.0.0.1:8000/detect_anomalies'
+    : 'https://your-production-app-url.com/detect_anomalies'; // TODO: Update this for production
 
 // Init Chart.js
 function initChart() {
@@ -156,6 +158,8 @@ function updateDashboard(result) {
 }
 
 function plotData(data) {
+    if (!data || data.length === 0) return;
+
     // Separate normal vs threats. We use 'bytes_in' or something similar.
     // To make it generic, we'll try to find any 2 numeric columns.
     const keys = Object.keys(data[0]).filter(k => k !== 'is_anomaly');
